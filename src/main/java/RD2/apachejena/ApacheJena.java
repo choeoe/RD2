@@ -1,4 +1,4 @@
-package org.example.apachejena;
+package RD2.apachejena;
 
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;

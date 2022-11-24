@@ -1,4 +1,4 @@
-package org.example;
+package RD2;
 
 import com.beust.jcommander.Parameter;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package org.example.rdf4j;
+package RD2.rdf4j;
 
 import org.eclipse.rdf4j.model.*;
 import org.eclipse.rdf4j.model.util.Values;

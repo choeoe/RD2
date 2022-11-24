@@ -1,4 +1,4 @@
-package org.example.gen;
+package RD2.gen;
 
 import java.util.ArrayList;
 import java.util.List;

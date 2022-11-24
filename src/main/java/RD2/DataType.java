@@ -1,4 +1,4 @@
-package org.example;
+package RD2;
 
 import java.util.Arrays;
 

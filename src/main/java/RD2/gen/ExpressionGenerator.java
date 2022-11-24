@@ -1,8 +1,8 @@
-package org.example.gen;
+package RD2.gen;
 
-import org.example.DataType;
-import org.example.Randomly;
-import org.example.StringTransformer;
+import RD2.DataType;
+import RD2.Randomly;
+import RD2.StringTransformer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

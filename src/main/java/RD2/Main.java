@@ -1,11 +1,11 @@
-package org.example;
+package RD2;
 
+import RD2.apachejena.ApacheJena;
+import RD2.gen.StatementGenerator;
+import RD2.marklogic.MarkLogic;
+import RD2.rdf4j.RDF4j;
 import com.beust.jcommander.JCommander;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.example.apachejena.ApacheJena;
-import org.example.gen.StatementGenerator;
-import org.example.marklogic.MarkLogic;
-import org.example.rdf4j.RDF4j;
 import org.apache.jena.query.ResultSet;
 import org.eclipse.rdf4j.query.BindingSet;
 
@@ -101,10 +101,10 @@ public class Main {
         rdf4j.init(dateTime);
         markLogic.init(dateTime);
         //start test
-        System.out.println(gdbNum);
         for (int i = 1; i <= gdbNum; i++) {
             //logFileWriter.write("--------------------\n");
             //System.out.print("--------------------");
+            System.out.printf("Generated GDB-%d%n",i);
             if ((i / 10) % 10 == 1) {
                 //logFileWriter.write("The " + i + "th generated graph database:\n");
                 //System.out.print("The " + i + "th generated graph database:");
@@ -162,7 +162,7 @@ public class Main {
             for (int j = 1; j <= queryNum; j++) {
                 //logFileWriter.write("----------\n");
                 //ystem.out.print("----------");
-                System.out.println("query: " + j);
+                System.out.println("Executed query number: " + j);
                 if ((j / 10) % 10 == 1){
                     //logFileWriter.write("The " + j + "th generated query:\n");
                     //System.out.print("The " + j + "th generated query:");
