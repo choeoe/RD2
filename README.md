@@ -28,7 +28,7 @@ mvn clean package
 
 1. Specifies the configuration of MarkLogic, the number of graph databases to be generated, and the number of SPARQL queries to be generated in each testing round.
 ```bash
-cd target
+mv target/RD2.jar ./
 ```
 ```bash
 java -jar RD2.jar --dbname Documents --host 127.0.0.1 --port 8000 --username root --password 123 --db-num 10 --query-num 100

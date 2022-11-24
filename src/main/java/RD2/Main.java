@@ -104,7 +104,6 @@ public class Main {
         for (int i = 1; i <= gdbNum; i++) {
             //logFileWriter.write("--------------------\n");
             //System.out.print("--------------------");
-            System.out.printf("Generated GDB-%d%n",i);
             if ((i / 10) % 10 == 1) {
                 //logFileWriter.write("The " + i + "th generated graph database:\n");
                 //System.out.print("The " + i + "th generated graph database:");
@@ -158,6 +157,7 @@ public class Main {
             jena.createGDB(gdbfilename);
             markLogic.createGDB(gdbfilename);
             genBNodeIDMap();
+            System.out.printf("Generated GDB-%d with %d URIs%n",i,URIs.size());
             //query test
             for (int j = 1; j <= queryNum; j++) {
                 //logFileWriter.write("----------\n");
@@ -375,30 +375,33 @@ public class Main {
         //logFileWriter.write("query results of Jena:\n");
         //System.out.println("query results of Jena:");
         ResultSet jenaResults = jena.query(queryStatement);
+        System.out.println("Apache Jena executed");
         List<String> jenaResList = new ArrayList<>();
-        if (jenaResults != null) {  //没报错
+        if (jenaResults != null) {
             jenaResList = jena.formatter(jenaResults, jenaBNodeIDMap);
-            Collections.sort(jenaResList);  //升序排序
+            Collections.sort(jenaResList);
 //            System.out.println(jenaResList);
         }
         //RDF4J
         //logFileWriter.write("query results of RDF4j:\n");
         //System.out.println("query results of RDF4j:");
         List<BindingSet> rdf4jResults = rdf4j.query(queryStatement);
+        System.out.println("RDF4J executed");
         List<String> rdf4jResList = new ArrayList<>();
-        if (rdf4jResults != null) {  //没报错
+        if (rdf4jResults != null) {
             rdf4jResList = rdf4j.formatter(rdf4jResults, rdf4jBNodeIDMap);
-            Collections.sort(rdf4jResList);  //升序排序
+            Collections.sort(rdf4jResList);
 //            System.out.println(rdf4jResList);
         }
         //MarkLogic
         //logFileWriter.write("query results of MarkLogic:\n");
         //System.out.println("query results of MarkLogic:");
         JsonNode markLogicResults = markLogic.query(queryStatement);
+        System.out.println("MarkLogic executed");
         List<String> markLogicResList = new ArrayList<>();
-        if (markLogicResults != null) {  //没报错
+        if (markLogicResults != null) {
             markLogicResList = markLogic.formatter(markLogicResults, markLogicBNodeIDMap);
-            Collections.sort(markLogicResList);  //升序排序
+            Collections.sort(markLogicResList);
 //            System.out.println(jenaResList);
         }
         if (jenaResults != null && rdf4jResults != null && markLogicResults != null
