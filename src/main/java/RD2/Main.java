@@ -45,8 +45,10 @@ public class Main {
     private static MarkLogic markLogic = new MarkLogic();
     private static StatementGenerator stGenerator = new StatementGenerator();
     private static File gdbfile;
+    private static File queryfile;
     private static File logfile;
     private static FileWriter gdbFileWriter;
+    private static FileWriter queryFileWriter;
     private static FileWriter logFileWriter;
     private static StringTransformer strTrans = new StringTransformer();
     private static String dateTime;
@@ -83,6 +85,17 @@ public class Main {
         File gdbDir = new File(gdbDirname);
         if (!gdbDir.exists()) {
             gdbDir.mkdir();
+        }
+        //query file
+        String queryPDirname = "./generatedQuery";
+        File queryPdir = new File(queryPDirname);
+        if (!queryPdir.exists()) {
+            queryPdir.mkdir();
+        }
+        String queryDirname = queryPDirname + "/" + dateTime;
+        File queryDir = new File(queryDirname);
+        if (!queryDir.exists()) {
+            queryDir.mkdir();
         }
         //generate log
         String logDirname = "./log";
@@ -149,6 +162,13 @@ public class Main {
                 gdbfile.createNewFile();
             }
             gdbFileWriter = new FileWriter(gdbfile, true);
+            //generate query file
+            String queryfilename = queryDirname + "/gdb" + i + "-" + dateTime + ".ttl";
+            queryfile = new File(queryfilename);
+            if (!queryfile.exists()) {
+                queryfile.createNewFile();
+            }
+            queryFileWriter = new FileWriter(queryfile, true);
             //generate gdb
             generateGDB();
             gdbFileWriter.close();
@@ -163,6 +183,7 @@ public class Main {
                 //logFileWriter.write("----------\n");
                 //ystem.out.print("----------");
                 System.out.println("Executed query number: " + j);
+                queryFileWriter.write("Query " + j + ":\n");
                 if ((j / 10) % 10 == 1){
                     //logFileWriter.write("The " + j + "th generated query:\n");
                     //System.out.print("The " + j + "th generated query:");
@@ -188,11 +209,13 @@ public class Main {
                 }
                 //logFileWriter.write("----------\n");
                 //System.out.println("----------");
-                //生成SparQL查询语句
+                //generate SparQL query statement
                 String queryStatement = generateQueryStatement();
+                queryFileWriter.write(queryStatement + "\n\n");
                 //差分测试
                 differentialTesting(queryStatement, i, j);
             }
+            queryFileWriter.close();
         }
         //logFileWriter.write("--------------------Test Result--------------------\n");
         //logFileWriter.write("Empty Results: " + emptyRes + ", " + 1.0 * emptyRes / gdbNum / queryNum * 100 + "%\n");
