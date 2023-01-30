@@ -14,8 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
-    private static int gdbNum = 1;  //gdb count
-    private static int queryNum = 100;  //queries per gdb
+    private static int gdbNum;  //gdb count
+    private static int queryNum;  //queries per gdb
 
     private static final int maxN = 10;  //uri max count
     private static final int minN = 1;  //uri min count
@@ -59,11 +59,6 @@ public class Main {
     private static int bugRes = 0;
 
     public static void main(String[] args) throws IOException {
-//        if (args != null && args.length > 0) {
-//            gdbNum = Integer.parseInt(args[0]);
-//            queryNum = Integer.parseInt(args[1]);
-//        }
-//        System.out.println(System.getProperty("user.dir"));
         System.out.println("");
         Options options = new Options();
         JCommander jCmd = new JCommander();
@@ -147,6 +142,7 @@ public class Main {
             literalIntegers.clear();
             literalDoubles.clear();
             literalBooleans.clear();
+            bNodeNum = 0;
             bNodePropertyLists.clear();
             jenaBNodeIDMap.clear();
             rdf4jBNodeIDMap.clear();
