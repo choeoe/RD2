@@ -93,7 +93,7 @@ public class Main {
             queryDir.mkdir();
         }
         //generate log
-        String logDirname = "./log";
+/*        String logDirname = "./log";
         File logDir = new File(logDirname);
         if (!logDir.exists()) {
             logDir.mkdir();
@@ -107,7 +107,7 @@ public class Main {
         //logFileWriter.write(dateTime + "\n\n");
         jena.init(dateTime);
         rdf4j.init(dateTime);
-        markLogic.init(dateTime);
+        markLogic.init(dateTime);*/
         //start test
         for (int i = 1; i <= gdbNum; i++) {
             //logFileWriter.write("--------------------\n");
