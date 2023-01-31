@@ -2,7 +2,7 @@ package RD2.gen;
 
 import RD2.DataType;
 import RD2.Randomly;
-import RD2.StringTransformer;
+import RD2.StringHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class ExpressionGenerator {
     private static String regex = "^[\u4e00-\u9fa5]";
 
     private Randomly rand = new Randomly();
-    private StringTransformer strTrans = new StringTransformer();
+    private StringHandler strTrans = new StringHandler();
 
     public void setURIs(List<String> URIs) {
         this.URIs = URIs;

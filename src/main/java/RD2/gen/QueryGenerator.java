@@ -1,7 +1,7 @@
 package RD2.gen;
 
 import RD2.Randomly;
-import RD2.StringTransformer;
+import RD2.StringHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ public class QueryGenerator {
     private final int maxGPNTDepth = 3;
 
     private Randomly rand = new Randomly();
-    private StringTransformer strTrans = new StringTransformer();
+    private StringHandler strTrans = new StringHandler();
     public ExpressionGenerator exprGenerator = new ExpressionGenerator();
 
     public List<String> URIs = new ArrayList<>();

@@ -82,7 +82,7 @@ public class Main {
             gdbDir.mkdir();
         }
         //query file
-        String queryPDirname = "./generatedQuery";
+        String queryPDirname = "./GeneratedQuery";
         File queryPdir = new File(queryPDirname);
         if (!queryPdir.exists()) {
             queryPdir.mkdir();
