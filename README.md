@@ -37,8 +37,8 @@ java -jar RD2.jar --dbname Documents --host 127.0.0.1 --port 8000 --username roo
 2. Default: The configuration of MarkLogic, and the number of graph databases and SPARQL queries are the information in the above example.
 
 ```bash
-java -jar RD2-1.0-SNAPSHOT.jar
+java -jar RD2.jar
 ```
 ## Result
 You can verify test results in `BugReport` directory. The `txt` file will record potential bugs attached with corresponding data.
-You can check full data generated in `GeneratedGDB` directory.
+You can check full RDF graph data generated in `GeneratedGDB` directory, and SPARQL queries generated in `GeneratedQuery` directory.
