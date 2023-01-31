@@ -25,7 +25,7 @@ public class Main {
 
     private static Random r = new Random();
     private static Randomly rand = new Randomly();
-    private static String regex = "^[\u4e00-\u9fa5]";  //predicate unicode
+//    private static String regex = "^[\u4e00-\u9fa5]";  //predicate unicode
 
     private static List<String> URIs = new ArrayList<>();  //predicate URI
     private static List<String> URIsP = new ArrayList<>();  //predicate URI
@@ -50,7 +50,7 @@ public class Main {
     private static FileWriter gdbFileWriter;
     private static FileWriter queryFileWriter;
     private static FileWriter logFileWriter;
-    private static StringTransformer strTrans = new StringTransformer();
+    private static StringHandler stringHandler = new StringHandler();
     private static String dateTime;
     private static int bugInd = 1;
 
@@ -276,9 +276,9 @@ public class Main {
                     switch (literalType) {
                         case "STRING":
                             String literalString = rand.getString();
-                            while (literalString.matches(regex))
+                            while (stringHandler.hasChineseCharacter(literalString))
                                 literalString = rand.getString();
-                            literalString = strTrans.stringTrans(literalString);
+                            literalString = stringHandler.stringTrans(literalString);
                             literalStrings.add(literalString);
                             triple += " \"" + literalString + "\"";
                             break;
@@ -289,7 +289,7 @@ public class Main {
                             break;
                         case "DOUBLE":
                             String literalDouble = Double.toString(rand.getDouble());
-                            literalDouble = strTrans.doubleTrans(literalDouble.toString());
+                            literalDouble = stringHandler.doubleTrans(literalDouble.toString());
                             literalDoubles.add(literalDouble);
                             triple += " " + literalDouble;
                             break;
@@ -324,9 +324,9 @@ public class Main {
                     switch (literalType) {
                         case "STRING":
                             String literalString = rand.getString();
-                            while (literalString.matches(regex))
+                            while (stringHandler.hasChineseCharacter(literalString))
                                 literalString = rand.getString();
-                            literalString = strTrans.stringTrans(literalString);
+                            literalString = stringHandler.stringTrans(literalString);
                             literalStrings.add(literalString);
                             propertyList += " \"" + literalString + "\"";
                             break;
@@ -337,7 +337,7 @@ public class Main {
                             break;
                         case "DOUBLE":
                             String literalDouble = Double.toString(rand.getDouble());
-                            literalDouble = strTrans.doubleTrans(literalDouble);
+                            literalDouble = stringHandler.doubleTrans(literalDouble);
                             literalDoubles.add(literalDouble);
                             propertyList += " " + literalDouble;
                             break;

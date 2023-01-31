@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StringTransformer {
+public class StringHandler {
     private List<String> ECHAR = new ArrayList<>(Arrays.asList("\\", "\"", "\'", "\t", "\b", "\n", "\r", "\f"));
     private List<String> ECHAR2 = new ArrayList<>(Arrays.asList("", "", "", "t", "b", "n", "r", "f"));
 
@@ -37,4 +37,15 @@ public class StringTransformer {
             res = str;
         return res;
     }
+
+    public boolean hasChineseCharacter(String str) {
+        for (char c : str.toCharArray()) {
+            if (c >= 0x4E00 && c <= 0x9FFF)
+                return true;
+            else if (c >= 0x3400 && c <= 0x4DBF)
+                return true;
+        }
+        return false;
+    }
+
 }
