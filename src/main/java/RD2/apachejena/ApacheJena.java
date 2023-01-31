@@ -111,7 +111,7 @@ public class ApacheJena {
         AnonId id = r.getId();
         String bNodeID = id.toString();
 
-        //qexec.close();
+        qexec.close();
 
         return bNodeID;
     }
