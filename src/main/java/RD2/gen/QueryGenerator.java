@@ -13,7 +13,7 @@ public class QueryGenerator {
     private final int maxGPNTDepth = 3;
 
     private Randomly rand = new Randomly();
-    private StringHandler strTrans = new StringHandler();
+    private StringHandler strHandler = new StringHandler();
     public ExpressionGenerator exprGenerator = new ExpressionGenerator();
 
     public List<String> URIs = new ArrayList<>();
@@ -28,7 +28,7 @@ public class QueryGenerator {
 
     private int gpntDepth = 0;
 
-    private static String regex = "^[\u4e00-\u9fa5]";
+//    private static String regex = "^[\u4e00-\u9fa5]";
 
 //    private final String NUMBER = "0123456789";
 //    private final String PN_CHARS_BASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -253,9 +253,9 @@ OFFSET
                     return "\"" + str + "\"";
                 } else {
                     String str = rand.getString();
-                    while (str.matches(regex))
+                    while (strHandler.hasChineseCharacter(str))
                         str = rand.getString();
-                    str = strTrans.stringTrans(str);
+                    str = strHandler.stringTrans(str);
                     return "\"" + str + "\"";
                 }
 
@@ -271,7 +271,7 @@ OFFSET
                     return "" + Randomly.fromList(literalDoubles);
                 else {
                     String doubleLiteral = Double.toString(rand.getDouble());
-                    doubleLiteral = strTrans.doubleTrans(doubleLiteral);
+                    doubleLiteral = strHandler.doubleTrans(doubleLiteral);
                     return doubleLiteral;
                 }
             case "genBooleanLiteral":

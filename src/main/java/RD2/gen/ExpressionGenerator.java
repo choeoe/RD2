@@ -21,10 +21,10 @@ public class ExpressionGenerator {
     private static List<String> literalDoubles = new ArrayList<>();
     private static List<Boolean> literalBooleans = new ArrayList<>();
 
-    private static String regex = "^[\u4e00-\u9fa5]";
+//    private static String regex = "^[\u4e00-\u9fa5]";
 
     private Randomly rand = new Randomly();
-    private StringHandler strTrans = new StringHandler();
+    private StringHandler strHandler = new StringHandler();
 
     public void setURIs(List<String> URIs) {
         this.URIs = URIs;
@@ -195,9 +195,9 @@ public class ExpressionGenerator {
             case STRING:
                 //if (size == 0) size = 20;
                 String str = rand.getString();
-                while(str.matches(regex))
+                while(strHandler.hasChineseCharacter(str))
                     str = rand.getString();
-                str = strTrans.stringTrans(str);
+                str = strHandler.stringTrans(str);
                 //???
 //                if (str.length() > size) {
 //                    str = str.substring(0, size);
