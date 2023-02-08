@@ -46,7 +46,9 @@ public class ExpressionGenerator {
     }
 
     public String generateExpression() {
-        return genExpr(DataType.BOOLEAN);
+        DataType dataType;
+        dataType = Randomly.fromList(DataType.ebvList());
+        return genExpr(dataType);
     }
 
     public String genExpr(DataType dataType) {
@@ -195,7 +197,7 @@ public class ExpressionGenerator {
             case STRING:
                 //if (size == 0) size = 20;
                 String str = rand.getString();
-                while(strHandler.hasChineseCharacter(str))
+                while (strHandler.hasChineseCharacter(str))
                     str = rand.getString();
                 str = strHandler.stringTrans(str);
                 //???
